@@ -1,0 +1,100 @@
+package net.daplumer.more_gems.entity.custom;
+
+import net.daplumer.more_gems.MoreGems;
+import net.daplumer.more_gems.data_types.ModSounds;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ItemStackParticleEffect;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+
+public class Boulder extends ThrownItemEntity {
+    @Override
+    protected Box calculateDefaultBoundingBox(Vec3d pos) {
+        return super.calculateDefaultBoundingBox(pos);
+    }
+
+    public static final double GRAVITY = .07;
+    public Boulder(EntityType<? extends ThrownItemEntity> entityType, World world) {
+        super(entityType, world);
+    }
+    public Boulder(World world, LivingEntity owner){
+        super(MoreGems.BOULDER,owner,world, MoreGems.BOULDER_ITEM.getDefaultStack());
+    }
+    public Boulder(World world, Vec3d xyz){
+        super(MoreGems.BOULDER,xyz.x,xyz.y,xyz.z,world, MoreGems.BOULDER_ITEM.getDefaultStack());
+    }
+
+    public Boulder(World world, BoleEntity boleEntity, int bestIndex) {
+        this(world,boleEntity);
+        this.setPos(boleEntity.getX(), boleEntity.getY() + 1,boleEntity.getZ());
+    }
+
+    @Override
+    protected void onBlockCollision(BlockState state) { // called on collision with a block
+        super.onBlockCollision(state);
+        if (this.getWorld() instanceof ServerWorld serverWorld) { // checks if the world is client
+            dropStack(serverWorld, new ItemStack(MoreGems.RUBBLE, getRandom().nextBetween(1,2)));
+            this.getWorld().sendEntityStatus(this, (byte)3); // particle?
+            this.kill((ServerWorld) getWorld()); // kills the projectile
+        }
+
+    }
+
+    @Environment(EnvType.CLIENT)
+    private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has do to with the snowball's particles. (OPTIONAL)
+        ItemStack itemStack = this.getStack();
+        return (ParticleEffect)(itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+    }
+
+    @Environment(EnvType.CLIENT)
+    public void handleStatus(byte status) { // Also not entirely sure, but probably also has to do with the particles. This method (as well as the previous one) are optional, so if you don't understand, don't include this one.
+        if (status == 3) {
+            ParticleEffect particleEffect = this.getParticleParameters();
+
+            for(int i = 0; i < 8; ++i) {
+                this.getWorld().addParticleClient(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+
+    }
+
+    @Override
+    protected Item getDefaultItem() {
+        return MoreGems.BOULDER_ITEM;
+    }	@Override
+    protected void onEntityHit(EntityHitResult entityHitResult) { // called on entity hit.
+        super.onEntityHit(entityHitResult);
+        Entity entity = entityHitResult.getEntity(); // sets a new Entity instance as the EntityHitResult (victim)
+        if (entity instanceof LivingEntity livingEntity) {
+            DamageSource damageSource = getDamageSources().create(MoreGems.BOULDER_DAMAGE_TYPE, this, (getOwner() != null ? getOwner() : this));
+            if(getWorld() instanceof ServerWorld serverWorld){
+                livingEntity.addVelocity(getVelocity().multiply(.2));
+                if(livingEntity.damage(serverWorld, damageSource,5)){
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * 5, 2),getEffectCause()); // applies a status effect
+                    this.discard();
+                }
+            }
+        }
+    }
+    @Override
+    protected double getGravity() {
+        return GRAVITY;
+    }
+}

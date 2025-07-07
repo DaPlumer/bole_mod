@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rubble": {
+      "conditions": {
+        "items": [
+          {
+            "items": "more_gems:rubble"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "more_gems:rubble_brick_wall_from_rubble_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rubble"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "more_gems:rubble_brick_wall_from_rubble_stonecutting"
+    ]
+  }
+}

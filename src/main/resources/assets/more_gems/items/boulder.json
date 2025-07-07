@@ -1,0 +1,26 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "more_gems:item/boulder_in_hand"
+        },
+        "when": [
+          "gui",
+          "fixed",
+          "firstperson_lefthand",
+          "firstperson_righthand",
+          "thirdperson_lefthand",
+          "thirdperson_righthand"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "more_gems:item/boulder"
+    },
+    "property": "minecraft:display_context"
+  }
+}

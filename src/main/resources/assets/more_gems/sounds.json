@@ -1,0 +1,15 @@
+{
+  "boulder_hit": {
+    "subtitle": "sound.more_gems.rock_hit",
+    "sounds": [
+      "more_gems:rock_hit_1"
+    ]
+  },
+  "bole_ambience": {
+    "subtitle": "sound.more_gems.bole_ambient",
+    "sounds": [
+      "more_gems:bole_ambient_1",
+      "more_gems:bole_ambient_2"
+    ]
+  }
+}

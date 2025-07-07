@@ -1,0 +1,35 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "more_gems:mosaic_rubble",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "more_gems:cracked_mosaic_rubble"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "more_gems:rubble_bricks",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "more_gems:cracked_rubble_bricks"
+          }
+        }
+      ]
+    }
+  ]
+}

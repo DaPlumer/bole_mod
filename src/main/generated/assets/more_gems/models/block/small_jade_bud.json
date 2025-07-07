@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "more_gems:block/small_jade_bud"
+  }
+}

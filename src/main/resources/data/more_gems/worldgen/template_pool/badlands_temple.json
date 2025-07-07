@@ -1,0 +1,330 @@
+{
+  "name": "more_gems:badlands_temple",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hallways/straight_1",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hallways/turn",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hallways/vertical",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hallways/end",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/entrance",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/big_circle",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/end",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/empty",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/zig_zag",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/down_front_stairs",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/down_central_stairs",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/3_way_room",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/middle/double_stairs",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/empty",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/ledge",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/parkour",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/spiral",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/spiral_2",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/zig_zag",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/double_zig_zag",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/null",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/stroke",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/room/side/platform",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/lantern",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/lantern_up",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/lantern_down",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/platform",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/platform_up",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/hanging/platform_down",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/loot",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 25,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/potion_stuff",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/bole_spawner",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 20,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/husk_spawner",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/witch_spawner",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/smithing",
+        "processors": "more_gems:badlands_temple"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/goody/explosives",
+        "processors": "more_gems:badlands_temple"
+      }
+    }
+  ]
+}

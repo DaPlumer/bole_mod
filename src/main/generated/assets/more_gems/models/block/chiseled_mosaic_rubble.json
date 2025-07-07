@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "more_gems:block/chiseled_mosaic_rubble_top",
+    "side": "more_gems:block/chiseled_mosaic_rubble"
+  }
+}

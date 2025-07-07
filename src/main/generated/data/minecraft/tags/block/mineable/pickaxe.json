@@ -1,0 +1,27 @@
+{
+  "values": [
+    "more_gems:rubble",
+    "more_gems:rubble_slab",
+    "more_gems:rubble_stairs",
+    "more_gems:rubble_wall",
+    "more_gems:cobbled_rubble",
+    "more_gems:cobbled_rubble_slab",
+    "more_gems:cobbled_rubble_stairs",
+    "more_gems:cobbled_rubble_wall",
+    "more_gems:rubble_bricks",
+    "more_gems:rubble_brick_slab",
+    "more_gems:rubble_brick_stairs",
+    "more_gems:rubble_brick_wall",
+    "more_gems:cracked_rubble_bricks",
+    "more_gems:polished_rubble",
+    "more_gems:polished_rubble_slab",
+    "more_gems:polished_rubble_stairs",
+    "more_gems:polished_rubble_wall",
+    "more_gems:mosaic_rubble",
+    "more_gems:mosaic_rubble_slab",
+    "more_gems:mosaic_rubble_stairs",
+    "more_gems:mosaic_rubble_wall",
+    "more_gems:cracked_mosaic_rubble",
+    "more_gems:chiseled_mosaic_rubble"
+  ]
+}

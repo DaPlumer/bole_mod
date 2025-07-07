@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "more_gems",
+	"version": "${version}",
+	"name": "Rushing Water",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/more_gems/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.daplumer.more_gems.MoreGems"
+		],
+		"client": [
+			"net.daplumer.more_gems.MoreGemsClient"
+		],
+		"fabric-datagen": [
+			"net.daplumer.more_gems.MoreGemsDataGenerator"
+		]
+	},
+	"mixins": [
+		"more_gems.mixins.json",
+		"data_modification_utils.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "more_gems:block/rubble_brick_slab"
+    },
+    "type=double": {
+      "model": "more_gems:item/rubble_brick_slab"
+    },
+    "type=top": {
+      "model": "more_gems:block/rubble_brick_slab_top"
+    }
+  }
+}

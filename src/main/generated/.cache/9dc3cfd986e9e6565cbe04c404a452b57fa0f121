@@ -1,0 +1,7 @@
+// 1.21.6	-999999999-01-01T00:00:00	Rushing Water/MoreGemsRecipeGenerator
+9308186c57a8c1a43d1cc79ec79eb3df3680393a data/more_gems/advancement/recipes/building_blocks/cobbled_rubble.json
+ecb149cabe8f592275d0e6ee5293f011076c40d1 data/more_gems/advancement/recipes/combat/boulder_from_rubble.json
+19cda20286e4d0cf75f475adad461383ebf8b01b data/more_gems/advancement/recipes/misc/bold_armor_trim_smithing_template.json
+b65d15ef9ce67f9eb6d9a06c1be0fb21ce88830e data/more_gems/recipe/bold_armor_trim_smithing_template.json
+e5ce5d15a78419f1c006d86a8e56eca1f46a2d95 data/more_gems/recipe/boulder_from_rubble.json
+e2850c0c1af3ca1649a7a92f31a4d2bb23c6b124 data/more_gems/recipe/cobbled_rubble.json

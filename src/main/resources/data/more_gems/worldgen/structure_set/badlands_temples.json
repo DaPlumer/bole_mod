@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "more_gems:badlands_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "separation": 8,
+    "spacing": 32,
+    "salt": 1646207470
+  }
+}

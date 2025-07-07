@@ -1,0 +1,15 @@
+{
+  "name": "badlands_temple_building",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "more_gems:badlands_temple/building",
+        "processors": "more_gems:badlands_temple"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "more_gems:block/cobbled_rubble",
+    "side": "more_gems:block/cobbled_rubble",
+    "top": "more_gems:block/cobbled_rubble"
+  }
+}

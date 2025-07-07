@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "stone_smelting",
+  "ingredient": "more_gems:rubble",
+  "result": {
+    "id": "more_gems:cobbled_rubble"
+  }
+}

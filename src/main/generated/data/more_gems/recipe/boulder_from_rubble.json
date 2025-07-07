@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "more_gems:rubble_item",
+    "more_gems:rubble_item"
+  ],
+  "result": {
+    "count": 1,
+    "id": "more_gems:boulder"
+  }
+}

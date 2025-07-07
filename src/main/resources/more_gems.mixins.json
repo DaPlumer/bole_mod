@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "net.daplumer.more_gems.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ShieldMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

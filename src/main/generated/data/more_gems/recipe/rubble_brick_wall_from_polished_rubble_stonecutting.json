@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "more_gems:polished_rubble",
+  "result": {
+    "count": 1,
+    "id": "more_gems:rubble_brick_wall"
+  }
+}

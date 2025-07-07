@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "more_gems:rubble_bricks",
+  "result": {
+    "id": "more_gems:cracked_rubble_bricks"
+  }
+}
