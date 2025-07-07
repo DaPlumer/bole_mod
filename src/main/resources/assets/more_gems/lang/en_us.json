@@ -36,5 +36,7 @@
   "item.more_gems.brue_pottery_sherd": "Brute Pottery Sherd",
   "item.more_gems.bole_spawn_egg": "Bole Spawn Egg",
   "entity.more_gems.bole": "Bole",
-  "entity.more_gems.boulder": "Boleder"
+  "entity.more_gems.boulder": "Boleder",
+  "sound.more_gems.bole_ambient": "Bole Grinds Against Itself",
+  "sound.more_gems.rock_hit": "Hit by a Rock"
 }

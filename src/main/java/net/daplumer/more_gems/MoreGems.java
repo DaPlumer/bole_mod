@@ -80,8 +80,6 @@ public class MoreGems implements ModInitializer {
 	public static final Item RUBBLE = REGISTERER.ITEMS.register("rubble_item");
 	public static final SpawnEggItem SPAWN_BOLE = REGISTERER.ITEMS.register("bole_spawn_egg", ItemsKt.SPAWN_EGG(BOLE));
 
-	public static final GemType JADE = GemType.of(Identifier.of(MOD_ID, "jade"), MapColor.LIME);
-	public static final GemBlockSet JADE_BLOCKS = GemBlockSet.of(REGISTERER, JADE);
 	//public static final BrushableBlock SUSPICIOUS_RED_SAND = REGISTERER.BLOCKS.register(
 	//		"suspicious_red_sand",
 	//		settings -> new BrushableBlock(Blocks.RED_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, settings),
