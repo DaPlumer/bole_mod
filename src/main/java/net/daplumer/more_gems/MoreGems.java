@@ -33,21 +33,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.world.gen.structure.Structure;
-import net.minecraft.world.gen.structure.StructureType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-// word()
-// literal("foo")
-// argument("bar", word())
-// Import everything in the CommandManager
-
 public class MoreGems implements ModInitializer {
 	public static final String MOD_ID = "more_gems";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final Registerer REGISTERER = Registerer.of(MOD_ID);
 	public static final GeneralDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
 	public static final EntityType<BoleEntity> BOLE = REGISTERER.ENTITY_TYPES.register(
@@ -66,8 +55,6 @@ public class MoreGems implements ModInitializer {
 			"boulder",
 			BoulderItem::new
 	);
-	public static final RegistryKey<Structure> BADLANDS_TEMPLE = RegistryKey.of(RegistryKeys.STRUCTURE,Identifier.of(MOD_ID,"badlands_temple"));
-	public static final BooleanProperty HAS_SPAWNED_BOLE = BooleanProperty.of("has_spawned_bole");
 	public static final RegistryKey<DamageType> BOULDER_DAMAGE_TYPE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(MOD_ID,"boulder"));
 	public static final KStoneSet RUBBLE_STONE = new KStoneSet.StoneSetBuilder(
 			"rubble", REGISTERER.BLOCKS)
@@ -79,22 +66,8 @@ public class MoreGems implements ModInitializer {
 			.build();
 	public static final Item RUBBLE = REGISTERER.ITEMS.register("rubble_item");
 	public static final SpawnEggItem SPAWN_BOLE = REGISTERER.ITEMS.register("bole_spawn_egg", ItemsKt.SPAWN_EGG(BOLE));
-
-	//public static final BrushableBlock SUSPICIOUS_RED_SAND = REGISTERER.BLOCKS.register(
-	//		"suspicious_red_sand",
-	//		settings -> new BrushableBlock(Blocks.RED_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, settings),
-	//		AbstractBlock.Settings.create()
-	//				.mapColor(MapColor.ORANGE)
-	//				.instrument(NoteBlockInstrument.SNARE)
-	//				.strength(0.25F)
-	//				.sounds(BlockSoundGroup.SUSPICIOUS_SAND)
-	//				.pistonBehavior(PistonBehavior.DESTROY)
-	//);
 	public static final SmithingTemplateItem BOLD_ARMOR_TRIM_SMITHING_TEMPLATE = REGISTERER.ITEMS.register(
 			"bold_armor_trim_smithing_template", ItemsKt.ARMOR_TRIM(Rarity.UNCOMMON));
-	//static {Registerer.registerBlockItem(SUSPICIOUS_RED_SAND);
-	//	ModTrimRegisterer.add(Identifier.of(MOD_ID,"bold"));
-	//}
 	public static final RegistryEntry<Potion> RESISTANCE_POTION =
 			Registries.POTION.getEntry( Registry.register(
 					Registries.POTION,
@@ -124,8 +97,6 @@ public class MoreGems implements ModInitializer {
 									1))));
 	@Override
 	public void onInitialize() {
-	//	BlockEntityType.BRUSHABLE_BLOCK.addSupportedBlock(SUSPICIOUS_RED_SAND);
-		//System.setProperty("mixin.debug.export","true");
 		FabricDefaultAttributeRegistry.register(BOLE, BoleEntity.createAttributes());
 		PayloadTypeRegistry.playS2C().register(BoleClientPacket.ID, BoleClientPacket.CODEC);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {RUBBLE_STONE.insertEntries(entries, Items.SANDSTONE, Shift.BEFORE);
