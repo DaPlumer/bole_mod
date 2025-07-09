@@ -3,6 +3,8 @@ package net.daplumer.more_gems.entity.client;
 import net.daplumer.more_gems.MoreGems;
 import net.daplumer.more_gems.MoreGemsClient;
 import net.daplumer.more_gems.entity.custom.BoleEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.text.Text;
@@ -10,6 +12,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 
+@Environment(EnvType.CLIENT)
 public class BoleRenderer extends LivingEntityRenderer<BoleEntity,BoleRenderState,BoleEntityModel> {
     public BoleRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BoleEntityModel(ctx.getPart(MoreGemsClient.BOLE_LAYER)), .4F);

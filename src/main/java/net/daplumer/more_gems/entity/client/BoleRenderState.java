@@ -1,12 +1,10 @@
 package net.daplumer.more_gems.entity.client;
 
-import com.google.common.primitives.UnsignedBytes;
-import net.daplumer.more_gems.entity.custom.BoleEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Environment(EnvType.CLIENT)
 public class BoleRenderState extends LivingEntityRenderState {
     byte boulders;
     long boulderCooldowns;

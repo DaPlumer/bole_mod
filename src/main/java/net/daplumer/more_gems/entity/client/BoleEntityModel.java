@@ -1,15 +1,13 @@
 package net.daplumer.more_gems.entity.client;
 
-import net.daplumer.more_gems.entity.custom.BoleEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.util.math.MathHelper;
-
 import java.util.Arrays;
 
-// Made with Blockbench 4.12.4
-// Exported for Minecraft version 1.17+ for Yarn
-// Paste this class into your mod and generate all required imports
+
+@Environment(EnvType.CLIENT)
 public class BoleEntityModel extends EntityModel<BoleRenderState> {
 	private final ModelPart bone;
 	private final ModelPart bone2;
