@@ -1,7 +1,6 @@
 package net.daplumer.more_gems.entity.custom;
 
 import net.daplumer.more_gems.MoreGems;
-import net.daplumer.more_gems.data_types.ModSounds;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
@@ -17,18 +16,28 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class Boulder extends ThrownItemEntity {
+    static class SimpleParticleTypeWrapper extends SimpleParticleType{
+
+        protected SimpleParticleTypeWrapper(boolean alwaysShow) {
+            super(alwaysShow);
+        }
+    }
     @Override
     protected Box calculateDefaultBoundingBox(Vec3d pos) {
         return super.calculateDefaultBoundingBox(pos);
     }
+    public static final SimpleParticleType BOULDER_PARTICLE = Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MoreGems.MOD_ID, "boulder_item"), new SimpleParticleTypeWrapper(false));
 
     public static final double GRAVITY = .07;
     public Boulder(EntityType<? extends ThrownItemEntity> entityType, World world) {
@@ -47,20 +56,20 @@ public class Boulder extends ThrownItemEntity {
     }
 
     @Override
-    protected void onBlockCollision(BlockState state) { // called on collision with a block
+    protected void onBlockCollision(BlockState state) {
         super.onBlockCollision(state);
-        if (this.getWorld() instanceof ServerWorld serverWorld) { // checks if the world is client
+        if (this.getWorld() instanceof ServerWorld serverWorld) {
             dropStack(serverWorld, new ItemStack(MoreGems.RUBBLE, getRandom().nextBetween(1,2)));
-            this.getWorld().sendEntityStatus(this, (byte)3); // particle?
-            this.kill((ServerWorld) getWorld()); // kills the projectile
+            this.getWorld().sendEntityStatus(this, (byte)3);
+            this.kill((ServerWorld) getWorld());
         }
 
     }
 
     @Environment(EnvType.CLIENT)
-    private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has do to with the snowball's particles. (OPTIONAL)
+    private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getStack();
-        return (ParticleEffect)(itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return (itemStack.isEmpty() ? BOULDER_PARTICLE : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
     }
 
     @Environment(EnvType.CLIENT)
