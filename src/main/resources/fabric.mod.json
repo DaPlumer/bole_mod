@@ -2,16 +2,15 @@
 	"schemaVersion": 1,
 	"id": "more_gems",
 	"version": "${version}",
-	"name": "Rushing Water",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "The Bole",
+	"description": "A small mod that adds the Bole, a member of the blaze family to the badlands",
 	"authors": [
 		"DaPlumer42",
-		"SilentSolaris",
 		"https://www.reddit.com/user/Traditional-Name4732/"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/DaPlumer/bole_mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/more_gems/icon.png",

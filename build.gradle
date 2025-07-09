@@ -95,7 +95,7 @@ curseforge {
 	project {
 		id = '1302335'
 		changelog = 'Initial Release'
-		releaseType = 'alpha'
+
 		addGameVersion minecraft_version
 		mainArtifact(jar) {
 			displayName = "Minecraft Boles $project.version for $minecraft_version"
