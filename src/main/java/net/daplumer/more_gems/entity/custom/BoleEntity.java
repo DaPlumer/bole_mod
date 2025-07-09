@@ -1,17 +1,13 @@
 package net.daplumer.more_gems.entity.custom;
 
-import com.google.common.primitives.UnsignedBytes;
 import net.daplumer.more_gems.MoreGems;
-import net.daplumer.more_gems.data_types.ModSounds;
 import net.daplumer.more_gems.entity.client.BoleEntityModel;
 import net.daplumer.more_gems.entity.client.BoleRenderConstants;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.ai.pathing.Path;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -21,26 +17,20 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector2d;
 
 import java.util.EnumSet;
-import java.util.Optional;
-import java.util.Random;
 
 public class BoleEntity extends HostileEntity implements RangedAttackMob {
     public static final TrackedData<Byte> BOULDERS = DataTracker.registerData(BoleEntity.class, TrackedDataHandlerRegistry.BYTE);
     public static final TrackedData<Long> BOULDER_DELAYS = DataTracker.registerData(BoleEntity.class, TrackedDataHandlerRegistry.LONG);
     public int cooldown = 0;
-    public static final byte MAX_BOULDER_DELAY = 127;//playtest the delay change
+    public static final byte MAX_BOULDER_DELAY = 127;
 
     public static long indexShifted(int index, byte byteValue){
         return ((long)byteValue) << (8 * index);
@@ -91,7 +81,7 @@ public class BoleEntity extends HostileEntity implements RangedAttackMob {
     }
 
     public BoleEntity(EntityType<? extends Entity> entityType, World world) {
-        super((EntityType<? extends HostileEntity>) entityType, world);
+        super(MoreGems.BOLE, world);
     }
     public static DefaultAttributeContainer.Builder createAttributes(){
         return MobEntity.createMobAttributes()
@@ -130,7 +120,6 @@ public class BoleEntity extends HostileEntity implements RangedAttackMob {
         if(bestBoulderIndex != -1 && hasBoulderAt(bestBoulderIndex)) {
             Vec3d vec3d = getTargetVelocity(target, Boulder.GRAVITY, 2, bestBoulderIndex);
             if (vec3d != null) {
-                //playSound(ModSounds.BOLE_AMBIENCE);
                 removeBoulder(bestBoulderIndex);
                 Boulder boulder = new Boulder(getWorld(), this);
                 boulder.setPosition(getBoulderPosition(bestBoulderIndex));
@@ -143,40 +132,10 @@ public class BoleEntity extends HostileEntity implements RangedAttackMob {
         if(target == null || cooldown > 0) return false;
         int bestBoulderIndex = getIndexOfBestBoulderForAngle(getAngleOfTarget(target));
         if(bestBoulderIndex == -1) return false;
-        if(!hasBoulderAt(bestBoulderIndex)) return false;
-        //if((Math.abs(getMinBoulderDistance(targetAngle)) % 360) > 90000F) return false;
-        return true;
+        return hasBoulderAt(bestBoulderIndex);
 
     }
 
-    public class StayWithinDistanceGoal extends Goal {
-        private final int minDist;
-        private final int maxDist;
-        private final int minDistSq;
-        private final int maxDistSq;
-        private final float speed;
-        private Path targetPath;
-
-        StayWithinDistanceGoal(float speed, int minDistance, int maxDistance){
-            super();
-            this.speed = speed;
-            minDist = minDistance;
-            maxDist = maxDistance;
-            minDistSq = minDist * minDist;
-            maxDistSq = maxDist * maxDist;
-        }
-        @Override
-        public boolean canStart() {
-            if(getTarget() == null) return false;
-            double distSq = squaredDistanceTo(getTarget());
-            return distSq < minDistSq || distSq > maxDistSq;
-        }
-        @Override
-        public void start() {
-            getNavigation().startMovingAlong(getNavigation().findPathTo(getTarget(),( minDist + maxDist)/2), this.speed);
-        }
-
-    }
     public class BoleAttackGoal extends Goal{
         private final MobEntity mob;
         private LivingEntity target;
@@ -261,26 +220,12 @@ public class BoleEntity extends HostileEntity implements RangedAttackMob {
         builder.add(BOULDER_DELAYS, 0L);
     }
 
-    public static Optional<Double> lowerQuadraticRoot(double a, double b, double c){
-        double discriminant = (b*b) - (4*a*c);
-        if(discriminant < 0) return Optional.empty();
-        return Optional.of(((Math.sqrt(discriminant) - b) / (2 * a)));
-    }
-    public static Vector2d XY(Vec3d vec){
-        return new Vector2d(vec.getX(),vec.getZ());
-    }
-    public static Vec3d toVec(Vector2d vec){
-        return new Vec3d(vec.x,0,vec.y);
-    }
-    //Position prediction is only working for Y coordinate
-
     @Override
     public void tick() {
         super.tick();
-        if(getWorld() instanceof ClientWorld client){
+        if(getWorld().isClient()){
             spawnSprintingParticles();
         }
-        //this.addVelocity(Vec3d.ZERO.addRandom(getRandom(),.1F));
         if(getTarget() != null && distanceTo(getTarget()) > 10)
             this.addVelocity(getTarget().getPos().subtract(getPos()).normalize().multiply(.05));
         decrementBoulderIndices();

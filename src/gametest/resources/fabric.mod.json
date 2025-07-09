@@ -1,0 +1,15 @@
+{
+	"schemaVersion": 1,
+	"id": "more_gems_test",
+	"version": "${version}",
+	"name": "The Bole",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-gametest": [
+			"net.daplumer.more_gems.MoreGemsGameTest"
+		],
+		"fabric-client-gametest": [
+			"net.daplumer.more_gems.MoreGemsClientGameTest"
+		]
+	}
+}

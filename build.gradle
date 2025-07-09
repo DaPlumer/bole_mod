@@ -34,6 +34,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${devauth_version}")
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
@@ -95,7 +96,7 @@ curseforge {
 	project {
 		id = '1302335'
 		changelog = 'Initial Release'
-
+		releaseType = 'release'
 		addGameVersion minecraft_version
 		mainArtifact(jar) {
 			displayName = "Minecraft Boles $project.version for $minecraft_version"

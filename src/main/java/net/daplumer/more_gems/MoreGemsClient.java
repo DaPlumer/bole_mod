@@ -2,12 +2,9 @@ package net.daplumer.more_gems;
 
 import net.daplumer.more_gems.entity.client.BoleEntityModel;
 import net.daplumer.more_gems.entity.client.BoleRenderer;
-import net.daplumer.more_gems.entity.custom.BoleClientPacket;
-import net.daplumer.more_gems.entity.custom.BoleEntity;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
@@ -23,10 +20,6 @@ public class MoreGemsClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(BOLE_LAYER, BoleEntityModel::getTexturedModelData);
 
 
-        ClientPlayNetworking.registerGlobalReceiver(BoleClientPacket.ID, (payload, context) -> {
-            context.client().execute(() -> {
-            });
-        });
         EntityRendererRegistry.register(MoreGems.BOULDER,(FlyingItemEntityRenderer::new));
     }
 }

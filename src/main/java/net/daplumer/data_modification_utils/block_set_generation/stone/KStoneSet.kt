@@ -23,8 +23,6 @@ import net.minecraft.client.data.BlockStateModelGenerator
 import net.minecraft.client.data.ItemModelGenerator
 import net.minecraft.client.data.Models
 import net.minecraft.client.data.TextureMap
-import net.minecraft.data.family.BlockFamilies
-import net.minecraft.data.family.BlockFamily
 import net.minecraft.data.recipe.RecipeExporter
 import net.minecraft.data.recipe.RecipeGenerator
 import net.minecraft.data.tag.ProvidedTagBuilder
@@ -43,7 +41,6 @@ import net.minecraft.registry.tag.TagKey
 import net.minecraft.util.Identifier
 import java.util.*
 import java.util.concurrent.CompletableFuture
-import java.util.function.Consumer
 import java.util.stream.Stream
 
 class KStoneSet(
@@ -458,7 +455,7 @@ class KStoneSet(
                     getTagBuilder(ItemTags.STAIRS).add(smallBlockSet.stairsBlock.asItem())
                     getTagBuilder(ItemTags.WALLS).add(smallBlockSet.wallBlock.asItem())
             }
-            getTagBuilder(ConventionalItemTags.STONES)!!.add(getDefaultBlock().asItem())
+            getTagBuilder(ConventionalItemTags.STONES).add(getDefaultBlock().asItem())
             if (variants.containsKey(Variant.COBBLED)) {
                 getTagBuilder(ConventionalItemTags.COBBLESTONES).add(
                     getVariant(

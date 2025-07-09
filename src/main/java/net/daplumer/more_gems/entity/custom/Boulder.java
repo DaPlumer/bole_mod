@@ -4,6 +4,7 @@ import net.daplumer.more_gems.MoreGems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.FluidBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,29 +18,19 @@ import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class Boulder extends ThrownItemEntity {
-    static class SimpleParticleTypeWrapper extends SimpleParticleType{
-
-        protected SimpleParticleTypeWrapper(boolean alwaysShow) {
-            super(alwaysShow);
-        }
-    }
+    public static final double GRAVITY = .07;
     @Override
     protected Box calculateDefaultBoundingBox(Vec3d pos) {
         return super.calculateDefaultBoundingBox(pos);
     }
-    public static final SimpleParticleType BOULDER_PARTICLE = Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MoreGems.MOD_ID, "boulder_item"), new SimpleParticleTypeWrapper(false));
 
-    public static final double GRAVITY = .07;
     public Boulder(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -50,13 +41,9 @@ public class Boulder extends ThrownItemEntity {
         super(MoreGems.BOULDER,xyz.x,xyz.y,xyz.z,world, MoreGems.BOULDER_ITEM.getDefaultStack());
     }
 
-    public Boulder(World world, BoleEntity boleEntity, int bestIndex) {
-        this(world,boleEntity);
-        this.setPos(boleEntity.getX(), boleEntity.getY() + 1,boleEntity.getZ());
-    }
-
     @Override
     protected void onBlockCollision(BlockState state) {
+        if(state.getBlock() instanceof FluidBlock) return;
         super.onBlockCollision(state);
         if (this.getWorld() instanceof ServerWorld serverWorld) {
             dropStack(serverWorld, new ItemStack(MoreGems.RUBBLE, getRandom().nextBetween(1,2)));
@@ -69,11 +56,11 @@ public class Boulder extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getStack();
-        return (itemStack.isEmpty() ? BOULDER_PARTICLE : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return (itemStack.isEmpty() ? MoreGems.BOULDER_PARTICLE : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
     }
 
     @Environment(EnvType.CLIENT)
-    public void handleStatus(byte status) { // Also not entirely sure, but probably also has to do with the particles. This method (as well as the previous one) are optional, so if you don't understand, don't include this one.
+    public void handleStatus(byte status) {
         if (status == 3) {
             ParticleEffect particleEffect = this.getParticleParameters();
 
@@ -87,7 +74,8 @@ public class Boulder extends ThrownItemEntity {
     @Override
     protected Item getDefaultItem() {
         return MoreGems.BOULDER_ITEM;
-    }	@Override
+    }
+    @Override
     protected void onEntityHit(EntityHitResult entityHitResult) { // called on entity hit.
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity(); // sets a new Entity instance as the EntityHitResult (victim)
@@ -105,5 +93,10 @@ public class Boulder extends ThrownItemEntity {
     @Override
     protected double getGravity() {
         return GRAVITY;
+    }
+    public static class SimpleParticleTypeWrapper extends SimpleParticleType{
+        public SimpleParticleTypeWrapper(boolean alwaysShow) {
+            super(alwaysShow);
+        }
     }
 }

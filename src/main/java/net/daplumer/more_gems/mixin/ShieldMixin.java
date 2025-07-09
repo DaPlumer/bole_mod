@@ -34,7 +34,6 @@ public abstract class ShieldMixin extends Entity implements Attackable, ServerWa
         if(source.getSource() instanceof Boulder boulder){
             BlocksAttacksComponent blocksAttacksComponent = getActiveItem().get(DataComponentTypes.BLOCKS_ATTACKS);
             if (blocksAttacksComponent != null) {
-                //blocksAttacksComponent.applyShieldCooldown(world, (LivingEntity) (Object)(this),5F,getActiveItem());
                 getActiveItem().damage(10,(LivingEntity) (Object) this,getActiveHand());
                 addVelocity(boulder.getVelocity().getHorizontal().multiply(5));
                 boulder.dropStack(world, new ItemStack(MoreGems.RUBBLE, boulder.getRandom().nextBetween(1,2)));

@@ -1,6 +1,5 @@
 package net.daplumer.more_gems;
 
-import net.daplumer.more_gems.datagen.GemModelGen;
 import net.daplumer.more_gems.datagen.ModItemTags;
 import net.daplumer.more_gems.datagen.RecipeGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -13,7 +12,6 @@ public class MoreGemsDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		MoreGems.RUBBLE_STONE.provideDataTo(pack, BlockTags.NEEDS_STONE_TOOL);
 		pack.addProvider(RecipeGenerator::new);
-		pack.addProvider(GemModelGen::new);
 		pack.addProvider(ModItemTags::new);
 	}
 }

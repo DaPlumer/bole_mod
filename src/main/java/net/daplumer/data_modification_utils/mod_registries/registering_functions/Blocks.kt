@@ -18,12 +18,12 @@ fun HANGING_SIGN(type:WoodType):(AbstractBlock.Settings) -> HangingSignBlock = {
 fun WALL_HANGING_SIGN(type:WoodType):(AbstractBlock.Settings) -> WallHangingSignBlock = {settings ->  WallHangingSignBlock(type,settings) }
 
 fun registerBlockSetType(type: BlockSetType, key:String):BlockSetType {
-    BlockSetTypeMixin.getValues()[key] = type;
+    BlockSetTypeMixin.getValues()[key] = type
     return type
 }
 fun registerWoodType(type: WoodType, key:String):WoodType {
-    WoodTypeMixin.getValues()[key] = type;
-    return type;
+    WoodTypeMixin.getValues()[key] = type
+    return type
 }
 
 fun copyLootTable(block: Block, copyTranslationKey: Boolean): AbstractBlock.Settings {

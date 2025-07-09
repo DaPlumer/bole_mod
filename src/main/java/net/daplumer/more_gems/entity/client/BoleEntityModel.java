@@ -9,10 +9,11 @@ import java.util.Arrays;
 
 @Environment(EnvType.CLIENT)
 public class BoleEntityModel extends EntityModel<BoleRenderState> {
-	private final ModelPart bone;
+	@SuppressWarnings("FieldCanBeLocal")
+    private final ModelPart bone;
 	private final ModelPart bone2;
 	private final ModelPart[] rods;
-	public static final int maxBoulders = 7;
+	public static final int maxBoulders = 6;
 	protected BoleEntityModel(ModelPart root) {
 		super(root);
 		this.bone = root.getChild("bone");
@@ -45,6 +46,7 @@ public class BoleEntityModel extends EntityModel<BoleRenderState> {
 						.cuboid(-2.0F, 7.0F, -2.0F, 4.0F, 4.0F, 4.0F),
 				ModelTransform.NONE);
 
+		@SuppressWarnings("unused")
 		ModelPartData bone2 = bone.addChild(
 				"bone2",
 				ModelPartBuilder.create()
@@ -68,7 +70,7 @@ public class BoleEntityModel extends EntityModel<BoleRenderState> {
 			rods[i].originX = (float) Math.cos(angle)*8;
 			rods[i].originZ = (float) Math.sin(angle)*8;
 			rods[i].originY = (float) Math.sin(state.getBoulderHeightAngle(i) * (float) Math.PI);
-			rods[i].originY +=(float) Math.max(0, state.getDelayAtBoulderIndex(i) - state.tickProgress);
+			rods[i].originY += Math.max(0, state.getDelayAtBoulderIndex(i) - state.tickProgress);
 			rods[i].originY = Math.max(rods[i].originY,-1);
 			rods[i].hidden  = (rods[i].originY > 17);
 		}

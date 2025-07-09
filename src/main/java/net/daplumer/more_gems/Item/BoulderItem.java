@@ -21,23 +21,19 @@ public class BoulderItem extends Item implements ProjectileItem {
         super(settings);
     }
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand); // creates a new ItemStack instance of the user's itemStack in-hand
+        ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
 
         if (!world.isClient) {
             Boulder snowballEntity = new Boulder(world, user);
             snowballEntity.setItem(itemStack);
-            snowballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
-                        /*
-                        snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-                        In 1.17,we will use setProperties instead of setVelocity.
-                        */
-            world.spawnEntity(snowballEntity); // spawns entity
+            snowballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 2F, 0F);
+            world.spawnEntity(snowballEntity);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(1); // decrements itemStack if user is not in creative mode
+            itemStack.decrement(1);
         }
 
         return ActionResult.SUCCESS;
